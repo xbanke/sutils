@@ -8,11 +8,12 @@
 @time:    2018/4/13 15:46
 """
 from datetime import datetime
+import inspect
 
 
 def timeit(func):
     """
-    计时装饰器
+    timing decorator
     """
 
     def wrapper(*args, **kwargs):
@@ -26,3 +27,16 @@ def timeit(func):
         return ret
 
     return wrapper
+
+
+def get_full_parameters(func, *args, **kwargs):
+    """
+    get full function parameters with given parameter and default parameter
+    """
+    sig = inspect.signature(func)
+    sig_bind = sig.bind(*args, **kwargs)
+    sig_bind.apply_defaults()
+    return sig_bind.args, sig_bind.kwargs
+
+
+
