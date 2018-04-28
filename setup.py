@@ -13,10 +13,11 @@ try:
 except ImportError:
     from distutils.core import setup
 
+from sutils import __version__
 
 setup(
     name='sutils',
-    version='0.1',
+    version=__version__,
     description='some utils',
     url='https://github.com/xbanke/sutils',
     author='quantpy',
